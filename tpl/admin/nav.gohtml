@@ -1,0 +1,29 @@
+{{ define "nav"}}
+    <nav class="navbar is-white">
+        <div class="container">
+            <div class="navbar-brand">
+                <a class="navbar-item brand-text" href="../">
+           Admin          
+        </a>
+                <div class="navbar-burger burger" data-target="navMenu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </div>
+            <div id="navMenu" class="navbar-menu">
+                <div class="navbar-start">
+                    <a class="navbar-item" href="/">
+            Home
+          </a>
+                    <a class="navbar-item" href="/coins/">Coins</a>
+                    <a class="navbar-item" href="/nodes/">Nodes</a>
+                    <a class="navbar-item" href="/nodeadd">AddNode</a>
+                    <a class="navbar-item" href="/explorers/">Explorers</a>
+                    <a class="navbar-item" href="/settings">Settings</a>
+                </div>
+
+            </div>
+        </div>
+    </nav>
+{{end}}

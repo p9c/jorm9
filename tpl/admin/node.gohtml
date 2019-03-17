@@ -1,0 +1,124 @@
+{{ define "content"}}
+<h1 class="is-size-1 has-text-white">Edit {{.name}}</h1>
+<div class="box">
+<form  action="/node" method="POST" target="_top">
+
+
+
+
+<div class="field">
+  <label class="label">NodeID</label>
+  <div class="control">
+    <input class="input" type="text" id="nodeid" name="nodeid" placeholder="{{.nodeid}}" value="{{.nodeid}}" >
+  </div>
+</div>
+
+
+
+
+
+<div class="field">
+  <label class="label">Coin</label>
+  <div class="control">
+    <div class="select">
+      <select id="coin" name="coin" >
+        <option>{{.coin}}</option>
+            <option>parallelcoin</option>
+            <option>mazacoin</option>
+            <option>europecoin</option>
+            <option>russiacoin</option>
+            <option>digitalcoin</option>
+            <option>dollaronline</option>
+            <option>potcoin</option>
+            <option>bitbay</option>
+            <option>dimecoin</option>
+            <option>mojocoin</option>
+      </select>
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+<div class="field">
+  <label class="label">RPCUser</label>
+  <div class="control">
+    <input class="input" type="text" id="rpcuser" name="rpcuser" placeholder="{{.rpcuser}}" value="{{.rpcuser}}" >
+  </div>
+</div>
+
+<div class="field">
+  <label class="label">RPCPassword</label>
+  <div class="control">
+    <input class="input" type="text" id="rpcpassword" name="rpcpassword" placeholder="{{.rpcpassword}}" value="{{.rpcpassword}}" >
+  </div>
+</div>
+
+
+<div class="field">
+  <label class="label">Address</label>
+  <div class="control">
+    <input class="input" type="text" id="address" name="address" placeholder="{{.address}}" value="{{.address}}" >
+  </div>
+</div>
+
+<div class="field">
+  <label class="label">IP</label>
+  <div class="control">
+    <input class="input" type="text" id="ip" name="ip" placeholder="{{.ip}}" value="{{.ip}}" >
+  </div>
+</div>
+<div class="field">
+  <label class="label">Port</label>
+  <div class="control">
+    <input class="input" type="text" id="port" name="port" placeholder="{{.port}}"  value="{{.port}}" >
+  </div>
+</div>
+
+
+
+
+
+<div class="field">
+  <div class="control">
+    <label class="checkbox">
+    <input type="checkbox" name="bitnode" value="{{.bitnode}}" >
+      BitNode
+    </label>
+  </div>
+</div>
+
+
+<div class="field">
+  <div class="control">
+    <label class="checkbox">
+        <input type="checkbox" name="published" value="{{.published}}" >
+      Published
+    </label>
+  </div>
+</div>
+
+
+<div class="field is-grouped">
+  <div class="control">
+    <input type="submit" value="Edit Node" class="button is-link">
+  </div>
+</div>
+
+
+
+
+</form>
+                    
+<form  action="/a/delete" method="POST" class="form-horizontal p2" target="_top">
+  <input type="hidden"  id="table" name="table" value="nodes" >
+   <input type="hidden" id="key" name="key" value="{{.slug}}">
+     <input type="submit"
+       value="Delete Node"
+       class="btn btn-primary input-group-btn">
+ </form>
+ </div>
+{{end}}

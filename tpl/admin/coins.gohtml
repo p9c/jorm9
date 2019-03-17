@@ -1,0 +1,32 @@
+{{ define "content"}}
+<h1 class="is-size-1 has-text-white">Coins</h1>
+
+<div class="columns is-multiline index">
+  {{range .}}
+                    <div class="column is-3">
+
+
+      <a href="/coins/{{.slug}}">
+      <div class="box">
+  <article class="media">
+    <div class="media-left">
+      <figure class="image is-32x32">
+      <img src="data:image/png;base64,{{.imgs.img32}}" class="" width="32" height="32" alt="{{.name}}">
+      </figure>
+    </div>
+    <div class="media-content">
+      <div class="content">
+          <strong>{{.name}}</strong> 
+      </div>
+    </div>
+  </article>
+</div>
+
+         </a>
+        </div>
+        {{end}}
+  </div>
+  
+
+
+{{end}}

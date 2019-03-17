@@ -1,0 +1,87 @@
+{{ define "content"}}
+<h1 class="is-size-1 has-text-white">Add node</h1>
+<div class="box">
+<!-- set node -->               
+  <form  action="/node" method="POST" target="_top">
+    <div class="field">
+      <label class="label">NodeID</label>
+      <div class="control">
+        <input class="input" type="text" id="nodeid" name="nodeid" placeholder="Enter NodeID" >
+      </div>
+    </div>
+    <div class="field">
+      <label class="label">Coin</label>
+      <div class="control">
+        <div class="select">
+          <select id="coin" name="coin" >
+            <option>Select coin</option>
+            <option>parallelcoin</option>
+            <option>mazacoin</option>
+            <option>europecoin</option>
+            <option>russiacoin</option>
+            <option>digitalcoin</option>
+            <option>dollaronline</option>
+            <option>potcoin</option>
+            <option>bitbay</option>
+            <option>dimecoin</option>
+            <option>mojocoin</option>
+          </select>
+        </div>
+      </div>
+    </div>
+    <div class="field">
+      <label class="label">RPCUser</label>
+      <div class="control">
+        <input class="input" type="text" id="rpcuser" name="rpcuser" placeholder="Enter RPCUser" >
+      </div>
+    </div>
+    <div class="field">
+      <label class="label">RPCPassword</label>
+      <div class="control">
+        <input class="input" type="text" id="rpcpassword" name="rpcpassword" placeholder="Enter RPCPassword" >
+      </div>
+    </div>
+    <div class="field">
+      <label class="label">Addr</label>
+      <div class="control">
+        <input class="input" type="text" id="address" name="address" placeholder="Enter Address" >
+      </div>
+    </div>
+        <div class="field">
+      <label class="label">IP</label>
+      <div class="control">
+        <input class="input" type="text" id="ip" name="ip" placeholder="Enter IP" >
+      </div>
+    </div>
+    <div class="field">
+      <label class="label">Port</label>
+      <div class="control">
+        <input class="input" type="number" id="port" name="port" placeholder="Enter Port" >
+      </div>
+    </div>
+    <div class="field">
+      <div class="control">
+        <label class="checkbox">
+        <input type="checkbox" name="BitNode" checked="">
+          BitNode
+        </label>
+      </div>
+    </div>
+     <div class="field">
+      <div class="control">
+        <label class="checkbox">
+        <input type="checkbox" name="published" checked="">
+          Published
+        </label>
+      </div>
+    </div>
+    <div class="field is-grouped">
+      <div class="control">
+
+        <input type="submit" value="Add Node" class="button is-link">
+      </div>
+    </div>
+  </form>
+<!-- set node -->
+</div>
+{{end}}

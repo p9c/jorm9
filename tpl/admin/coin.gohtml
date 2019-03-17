@@ -1,0 +1,38 @@
+{{ define "content"}}
+<h1 class="is-size-1 has-text-white">Edit {{.name}}</h1>
+<div class="box">
+  <form  action="/edit/coin" method="POST" target="_top">
+    <div class="columns index">
+      <div class="column is-6">
+
+              <div class="field"><label class="label">Images</label>
+              <img src="data:image/png;base64,{{.imgs.img256}}" class="" alt="{{.name}}" />
+              <img src="data:image/png;base64,{{.imgs.img128}}" class="" alt="{{.name}}" />
+              <img src="data:image/png;base64,{{.imgs.img64}}" class="" alt="{{.name}}" />
+              <img src="data:image/png;base64,{{.imgs.img32}}" class="" alt="{{.name}}" />
+              <img src="data:image/png;base64,{{.imgs.img16}}" class="" alt="{{.name}}" />
+              </div>
+        <div class="field"><label class="label">Description</label><div class="control"><textarea class="textarea" id="desc" name="desc" placeholder="{{.cdata.desc}}"></textarea></div></div>
+        <div class="field"><label class="label">Web Site Url</label><div class="control"><input class="input" id="web" name="web"placeholder="{{.cdata.web}}"></div></div>
+        <div class="field"><label class="label">Total Coin Supply</label><div class="control"><input class="input" id="total" name="total"placeholder="{{.cdata.total}}"></div></div>
+        <div class="field"><label class="label">DifficultyAdjustment</label><div class="control"><input class="input" id="diff" name="diff"placeholder="{{.cdata.diff}}"></div></div>
+        <div class="field"><label class="label">Block Reward Reduction</label><div class="control"><input class="input" id="rew" name="rew"placeholder="{{.cdata.rew}}"></div></div>
+        <div class="field"><label class="label">Proof Type</label><div class="control"><input class="input" id="proof" name="proof"placeholder="{{.cdata.proof}}"></div></div>
+        <div class="field"><label class="label">Start Date</label><div class="control"><input class="input" id="start" name="start" placeholder="{{.cdata.start}}"></div></div>
+        <div class="field"><label class="label">Twitter</label><div class="control"><input class="input" id="tw" name="tw"placeholder="{{.cdata.tw}}"></div></div>   
+      </div>
+      <div class="column is-6">
+        <div class="field"><label class="label">CCID</label><div class="control"><input class="input" id="ccid" name="ccid"placeholder="{{.ccid}}"></div></div>
+        <div class="field"><label class="label">Name</label><div class="control"><input class="input" id="name" name="name" placeholder="{{.name}}"></div></div>
+        <div class="field"><label class="label">Symbol</label><div class="control"><input class="input" id="symbol" name="symbol" placeholder="{{.symbol}}"></div></div>
+        <div class="field"><label class="label">Slug</label><div class="control"><input class="input" id="slug" name="slug" placeholder="{{.slug}}"></div></div>
+        <div class="field"><label class="label">Algo</label><div class="control"><input class="input" id="algo" name="algo" placeholder="{{.algo}}"></div></div>
+        <div class="field"><div class="control"><label class="checkbox"><input type="checkbox" name="published" checked="">Published</label></div></div>
+
+
+        <div class="field is-grouped"><div class="control"><input type="submit" value="Update coin" class="button is-link"></div></div>
+      </div>
+    </div>
+  </form>
+</div>
+{{end}}

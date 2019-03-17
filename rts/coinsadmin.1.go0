@@ -1,0 +1,33 @@
+package rts
+
+import (
+	"encoding/json"
+	"fmt"
+	"net/http"
+
+	"github.com/gorilla/mux"
+	"github.com/parallelcointeam/jorm9/coins"
+	"github.com/parallelcointeam/jorm9/jdb"
+)
+
+func APICoins(w http.ResponseWriter, r *http.Request) {
+	coinsA := jdb.GetAllJDB("coins", coins.Coin{})
+	coinsB := coins.APICoins{
+		Coins: coinsA,
+	}
+
+	coins, err := json.Marshal(coinsB)
+	if err != nil {
+		fmt.Println("Error encoding JSON")
+		return
+	}
+
+	w.Write([]byte(coins))
+}
+
+func APICoin(w http.ResponseWriter, r *http.Request) {
+	vars := mux.Vars(r)
+	slug := vars["slug"]
+	coin := jdb.GetOneJDB("coins", slug, coins.Coin{})
+	w.Write([]byte(coin.([]byte)))
+}
