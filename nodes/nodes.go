@@ -3,13 +3,10 @@ package nodes
 import (
 	"encoding/json"
 	"fmt"
+	"github.com/p9c/jorm9/jdb"
+	"github.com/p9c/jorm9/utils"
 	"strconv"
 	"strings"
-	"time"
-
-	"github.com/parallelcointeam/jorm9/jdb"
-	"github.com/parallelcointeam/jorm9/coins"
-	"github.com/parallelcointeam/jorm9/utils"
 )
 
 func GetNodeStatus() {
@@ -45,7 +42,7 @@ func GetNodeStatus() {
 }
 
 func GetNodes() {
-	cnodes, err := jdb.JDB.ReadAll("nodes")
+	cnodes, err := jdb.DB.ReadAll("nodes")
 	if err != nil {
 		fmt.Println("Error", err)
 	}
@@ -97,7 +94,7 @@ func GetNodes() {
 
 								nodec.BitNode = false
 								// cs.MainJDB.MJDBSet("nodes", GPSID, nodec)
-								jdb.JDB.Write("nodes", nodec.Slug, nodec)
+								//jdb.JDB.Write("nodes", nodec.Slug, nodec)
 
 								fmt.Println("Load Nodes")
 							}
@@ -121,7 +118,7 @@ func GetNodes() {
 // }
 
 func GetNodesByCoin(coin string) (nodes []Node) {
-	cnodes, err := jdb.JDB.ReadAll("nodes")
+	cnodes, err := jdb.DB.ReadAll("nodes")
 	if err != nil {
 		fmt.Println("Error", err)
 	}
@@ -147,70 +144,68 @@ func GetBitNodes(coin string) (node Node) {
 	return
 }
 
-func GetBitNodeStatus() {
-	cnodes, err := jdb.JDB.ReadAll("nodes")
-	if err != nil {
-		fmt.Println("Error", err)
-	}
-	for _, nd := range cnodes {
-		var node Node
-		if err := json.Unmarshal([]byte(nd), &node); err != nil {
-			fmt.Println("Error", err)
-		}
-		if node.BitNode {
-			fmt.Println("Load Node", node.NodeID)
+//func GetBitNodeStatus() {
+//	//cnodes, err := jdb.JDB.ReadAll("nodes")
+//	//if err != nil {
+//	//	fmt.Println("Error", err)
+//	//}
+//	for _, nd := range cnodes {
+//		var node Node
+//		if err := json.Unmarshal([]byte(nd), &node); err != nil {
+//			fmt.Println("Error", err)
+//		}
+//		if node.BitNode {
+//			fmt.Println("Load Node", node.NodeID)
+//
+//			ns := node.JNGetInfo()
+//
+//			stat := NodeStat{
+//				Time: time.Now(),
+//				Data: ns,
+//			}
+//			node.Status = stat
+//
+//			jdb.JDB.Write("nodes", node.Slug, node)
+//
+//		}
+//	}
+//}
 
-			ns := node.JNGetInfo()
-
-			stat := NodeStat{
-				Time: time.Now(),
-				Data: ns,
-			}
-			node.Status = stat
-
-			jdb.JDB.Write("nodes", node.Slug, node)
-
-		}
-	}
-}
-
-
-
-
-func GetLastBlocks() {
-	var lastblocks []interface{}
-	ncoins, err := jdb.JDB.ReadAll("coins")
-	if err != nil {
-		fmt.Println("Error", err)
-	}
-	for _, nc := range ncoins {
-		var coin coins.Coin
-		if err := json.Unmarshal([]byte(nc), &coin); err != nil {
-			fmt.Println("Error", err)
-		}
-
-		
-		if coin.BitNode {
-			fmt.Println("Load cossssin", coin.Name)
-
-			node := GetBitNodes(coin.Slug)
-
-			blockcount := node.JNGetBlockCount()
-			minusblockcount := int(blockcount - 10)
-			for ibh := minusblockcount; ibh <= blockcount; {
-				//ib := strconv.Itoa(ibh)
-				blk := node.JNGetBlockByHeight(ibh)
-				lastblocks = append(lastblocks, blk)
-				ibh++
-				fmt.Println("Load lopopopo", ibh)
-
-			}
-			fmt.Println("Load lastblocks", lastblocks)
-
-			jdb.JDB.Write("chains", coin.Slug, lastblocks)
-
-		}
-	}
-}
-
-
+//
+//func GetLastBlocks() {
+//	var lastblocks []interface{}
+//	//ncoins, err := jdb.JDB.ReadAll("coins")
+//	//if err != nil {
+//	//	fmt.Println("Error", err)
+//	//}
+//	//for _, nc := range ncoins {
+//	//	var coin coins.Coin
+//	//	if err := json.Unmarshal([]byte(nc), &coin); err != nil {
+//	//		fmt.Println("Error", err)
+//	//	}
+//
+//
+//		//if coin.BitNode {
+//		//	fmt.Println("Load cossssin", coin.Name)
+//
+//			node := GetBitNodes(coin.Slug)
+//
+//			blockcount := node.JNGetBlockCount()
+//			minusblockcount := int(blockcount - 10)
+//			for ibh := minusblockcount; ibh <= blockcount; {
+//				//ib := strconv.Itoa(ibh)
+//				blk := node.JNGetBlockByHeight(ibh)
+//				lastblocks = append(lastblocks, blk)
+//				ibh++
+//				fmt.Println("Load lopopopo", ibh)
+//
+//			}
+//			fmt.Println("Load lastblocks", lastblocks)
+//
+//			//jdb.JDB.Write("chains", coin.Slug, lastblocks)
+//
+//		//}
+//	//}
+//}
+//
+//

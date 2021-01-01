@@ -3,7 +3,7 @@ package nodes
 import (
 	"fmt"
 
-	"github.com/parallelcointeam/jorm/tools"
+	"github.com/p9c/jorm9/tools"
 )
 
 // var _ JormNode = &Node{}

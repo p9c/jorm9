@@ -6,40 +6,38 @@ import (
 	"net/http"
 	"strconv"
 
-	"github.com/parallelcointeam/jorm9/jdb"
-
 	"github.com/gorilla/mux"
 	ip2location "github.com/ip2location/ip2location-go"
 )
 
-func ABitNodes(w http.ResponseWriter, r *http.Request) {
-	var bns []Node
-	cnodes, err := jdb.JDB.ReadAll("nodes")
-	if err != nil {
-		fmt.Println("Error", err)
-	}
-	for _, nd := range cnodes {
-		var node Node
-		if err := json.Unmarshal([]byte(nd), &node); err != nil {
-			fmt.Println("Error", err)
-		}
-		if node.BitNode {
-			fmt.Println("Load Node", node.NodeID)
-
-			bns = append(bns, node)
-		}
-	}
-	bitNodes := map[string]interface{}{
-		"d": bns,
-		// "coin": gCoin,
-	}
-	bn, err := json.Marshal(bitNodes)
-	if err != nil {
-		fmt.Println("Error encoding JSON")
-		return
-	}
-	w.Write([]byte(bn))
-}
+//func ABitNodes(w http.ResponseWriter, r *http.Request) {
+//	var bns []Node
+//	cnodes, err := jdb.JDB.ReadAll("nodes")
+//	if err != nil {
+//		fmt.Println("Error", err)
+//	}
+//	for _, nd := range cnodes {
+//		var node Node
+//		if err := json.Unmarshal([]byte(nd), &node); err != nil {
+//			fmt.Println("Error", err)
+//		}
+//		if node.BitNode {
+//			fmt.Println("Load Node", node.NodeID)
+//
+//			bns = append(bns, node)
+//		}
+//	}
+//	bitNodes := map[string]interface{}{
+//		"d": bns,
+//		// "coin": gCoin,
+//	}
+//	bn, err := json.Marshal(bitNodes)
+//	if err != nil {
+//		fmt.Println("Error encoding JSON")
+//		return
+//	}
+//	w.Write([]byte(bn))
+//}
 
 func ANodesMap(w http.ResponseWriter, r *http.Request) {
 	vars := mux.Vars(r)
@@ -79,28 +77,29 @@ func ANodesMap(w http.ResponseWriter, r *http.Request) {
 	}
 	w.Write([]byte(nodes))
 }
-func ABitNode(w http.ResponseWriter, r *http.Request) {
-	vars := mux.Vars(r)
-	// coin := vars["coin"]
-	nodeid := vars["nodeid"]
-	var node Node
-	if err := jdb.JDB.Read("nodes", nodeid, &node); err != nil {
-		fmt.Println("Error", err)
-	}
-	// gCoin := jdb.GetOneJDB("coins", coin, coins.Coin{})
-	info := node.JNGetInfo()
 
-	bitNode := map[string]interface{}{
-		"d": info,
-		// "coin": gCoin,
-	}
-	bn, err := json.Marshal(bitNode)
-	if err != nil {
-		fmt.Println("Error encoding JSON")
-		return
-	}
-	w.Write([]byte(bn))
-}
+//func ABitNode(w http.ResponseWriter, r *http.Request) {
+//	vars := mux.Vars(r)
+//	// coin := vars["coin"]
+//	nodeid := vars["nodeid"]
+//	var node Node
+//	if err := jdb.JDB.Read("nodes", nodeid, &node); err != nil {
+//		fmt.Println("Error", err)
+//	}
+//	// gCoin := jdb.GetOneJDB("coins", coin, coins.Coin{})
+//	info := node.JNGetInfo()
+//
+//	bitNode := map[string]interface{}{
+//		"d": info,
+//		// "coin": gCoin,
+//	}
+//	bn, err := json.Marshal(bitNode)
+//	if err != nil {
+//		fmt.Println("Error encoding JSON")
+//		return
+//	}
+//	w.Write([]byte(bn))
+//}
 func ALastBlock(w http.ResponseWriter, r *http.Request) {
 	vars := mux.Vars(r)
 	coin := vars["coin"]
@@ -129,14 +128,14 @@ func ALastBlock(w http.ResponseWriter, r *http.Request) {
 }
 
 func ABlock(w http.ResponseWriter, r *http.Request) {
-	vars := mux.Vars(r)
-	coin := vars["coin"]
+	//vars := mux.Vars(r)
+	//coin := vars["coin"]
 
-	node := GetBitNodes(coin)
-	lastblock := node.JNGetBlockCount()
+	//node := GetBitNodes(coin)
+	//lastblock := node.JNGetBlockCount()
 
 	bl := map[string]interface{}{
-		"d": lastblock,
+		//"d": lastblock,
 	}
 	out, err := json.Marshal(bl)
 	if err != nil {

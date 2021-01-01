@@ -1,14 +1,11 @@
 package rts
 
 import (
-	"fmt"
 	"net/http"
 
 	"github.com/alecthomas/template"
-	"github.com/parallelcointeam/jorm9/hlp"
-	"github.com/parallelcointeam/jorm9/jdb"
-
 	"github.com/gorilla/mux"
+	"github.com/p9c/jorm9/hlp"
 )
 
 func Home(w http.ResponseWriter, r *http.Request) {
@@ -46,9 +43,9 @@ func AdminPage(w http.ResponseWriter, r *http.Request) {
 		// default:
 		// 	pageData = mod.Site{}
 		// }
-		if err := jdb.JDB.Read(lang, page, &pageData); err != nil {
-			fmt.Println("Error", err)
-		}
+		//if err := jdb.JDB.Read(lang, page, &pageData); err != nil {
+		//	fmt.Println("Error", err)
+		//}
 		data := struct {
 			Lang string      `json:"lang"`
 			Page interface{} `json:"page"`

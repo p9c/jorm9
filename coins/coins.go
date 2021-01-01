@@ -7,8 +7,7 @@ import (
 	"io/ioutil"
 	"net/http"
 
-	"github.com/parallelcointeam/jorm9/jdb"
-	"github.com/parallelcointeam/jorm9/utils"
+	"github.com/p9c/jorm9/utils"
 )
 
 // type NodeServices interface {
@@ -135,7 +134,7 @@ func GetCoins() {
 
 			}
 
-			jdb.JDB.Write("coins", slug, coin)
+			//jdb.JDB.Write("coins", slug, coin)
 
 			// fmt.Println("Insertededed", slug)
 			// fmt.Println("Insertedeimgurlimgurlded", imgurl)

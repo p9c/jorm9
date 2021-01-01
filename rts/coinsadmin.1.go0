@@ -6,8 +6,8 @@ import (
 	"net/http"
 
 	"github.com/gorilla/mux"
-	"github.com/parallelcointeam/jorm9/coins"
-	"github.com/parallelcointeam/jorm9/jdb"
+	"github.com/p9c/jorm9/coins"
+	"github.com/p9c/jorm9/jdb"
 )
 
 func APICoins(w http.ResponseWriter, r *http.Request) {

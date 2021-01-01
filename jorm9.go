@@ -7,9 +7,7 @@ import (
 
 	"github.com/gorilla/handlers"
 	"github.com/gorilla/mux"
-	"github.com/parallelcointeam/jorm9/coins"
-	"github.com/parallelcointeam/jorm9/nodes"
-	"github.com/parallelcointeam/jorm9/rts"
+	"github.com/p9c/jorm9/nodes"
 	"github.com/robfig/cron"
 )
 
@@ -21,7 +19,7 @@ func main() {
 	cr := cron.New()
 	cr.AddFunc("@every 22s", func() {
 		fmt.Println("Radi kron")
-		 nodes.GetBitNodeStatus()
+		//nodes.GetBitNodeStatus()
 		//go nodes.GetLastBlocks()
 	})
 	cr.Start()
@@ -29,35 +27,9 @@ func main() {
 	r.PathPrefix("/s/").Handler(http.StripPrefix("/s/", http.FileServer(http.Dir("./tpl/static/"))))
 	// r.PathPrefix("/amp/").Handler(http.StripPrefix("/amp/", http.FileServer(http.Dir("./tpl/amp/"))))
 
-	r.HandleFunc("/", rts.LoginPage) // GET
-	r.HandleFunc("/admin/login", rts.Login).Methods("POST")
-	r.HandleFunc("/admin/", rts.Home).Methods("GET")
-	r.HandleFunc("/admin/", rts.Admin).Methods("POST")
-
-	r.HandleFunc("/logout", rts.Logout).Methods("POST")
-
-	r.HandleFunc("/coins/", coins.Coins).Methods("GET")
-	r.HandleFunc("/coins/{slug}", coins.CoinPage).Methods("GET")
-	// r.HandleFunc("/coinadd", coins.CoinAdd).Methods("GET")
-	r.HandleFunc("/coin", coins.CoinPost).Methods("POST")
-
-	r.HandleFunc("/nodes/", nodes.Nodes).Methods("GET")
-	r.HandleFunc("/nodes/{slug}", nodes.NodePage).Methods("GET")
-	r.HandleFunc("/nodeadd", nodes.NodeAdd).Methods("GET")
-	r.HandleFunc("/node", nodes.NodePost).Methods("POST")
-
-	r.HandleFunc("/api/ini", coins.IniCoins).Methods("GET")
-
-	r.HandleFunc("/api/coins", coins.APICoins).Methods("GET")
-	r.PathPrefix("/api/coins/").Handler(http.StripPrefix("/api/coins/", http.FileServer(http.Dir("/web/comhttp/jdb/coins"))))
-	// r.PathPrefix("/i/").Handler(http.StripPrefix("/i/", http.FileServer(http.Dir("/web/comhttp/imgs"))))
-
-	// r.HandleFunc("/a/c/a", rts.ACoins).Methods("GET")
-	// r.HandleFunc("/", rts.AmpFrontHandler) // GET
-
-	r.HandleFunc("/n", nodes.ABitNodes).Methods("GET")
-	r.HandleFunc("/n/{coin}", nodes.ANodesMap).Methods("GET")
-	r.HandleFunc("/n/{coin}/{nodeid}", nodes.ABitNode).Methods("GET")
+	//r.HandleFunc("/n", nodes.ABitNodes).Methods("GET")
+	//r.HandleFunc("/n/{coin}", nodes.ANodesMap).Methods("GET")
+	//r.HandleFunc("/n/{coin}/{nodeid}", nodes.ABitNode).Methods("GET")
 
 	r.HandleFunc("/e/{coin}/last", nodes.ALastBlock).Methods("GET")
 	r.HandleFunc("/e/{coin}/b", nodes.ABlock).Methods("GET")

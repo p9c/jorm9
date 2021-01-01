@@ -4,8 +4,8 @@ import (
 	"net/http"
 
 	"github.com/alecthomas/template"
-	"github.com/parallelcointeam/jorm9/hlp"
-	"github.com/parallelcointeam/jorm9/rps"
+	"github.com/p9c/jorm9/hlp"
+	"github.com/p9c/jorm9/rps"
 
 	"github.com/gorilla/securecookie"
 )
